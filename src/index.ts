@@ -88,6 +88,7 @@ const ga = GA_MEASUREMENT_ID
 const cs = `
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      console.info('[BP]', 'Remove actions');
       const actions = document.querySelector('div.notion-collection_view_page-block > div > [role="tablist"] + div');
       if (actions) {
         actions.parentNode.removeChild(actions);
