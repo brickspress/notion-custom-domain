@@ -146,11 +146,14 @@ const customStyle = `
     display:none !important; 
   }
 
+  // Actions view, topbar, table view placeholders
   div.notion-collection_view_page-block > div > [role="tablist"] + div,
   .notion-topbar,
   .notion-table-view-empty-placeholder {
     display: none !important;
   }
+
+  // Desciption
   .notion-page-controls + div div[placeholder] {
     margin-top: 20px !important;
   }
@@ -163,6 +166,13 @@ const customStyle = `
   .notion-page-controls + div div[placeholder] a * {
     border: none !important;
     opacity: 1 !important;
+  }
+
+  // Hidden groups
+  .notion-board-view div[data-block-id] > div:last-child,
+  .notion-board-view div[data-block-id] > div[style*="margin-left"] {
+    display: none !important;
+    pointer-events: none !important;
   }
 `;
 
