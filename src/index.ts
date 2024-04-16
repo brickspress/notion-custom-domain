@@ -156,12 +156,14 @@ const customStyle = `
   // Desciption
   .notion-page-controls + div div[placeholder] {
     margin-top: 20px !important;
+    font-size: 15px !important;
   }
   .notion-page-controls + div div[placeholder] a {
     color: rgb(255 255 255) !important;
     background: rgb(0 0 0) !important;
     padding: 3px 8px !important;
     border-radius: 4px !important;
+    font-weight: 500 !important;
   }
   .notion-page-controls + div div[placeholder] a * {
     border: none !important;
