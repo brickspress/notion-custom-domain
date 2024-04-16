@@ -96,25 +96,33 @@ const customScript = () => {
     ) {
       console.info('[NCD]', 'Suppress request:', url);
 
+      const selectors = [
+        'div.notion-collection_view_page-block > div > [role="tablist"] + div',
+        '.notion-selectable.notion-collection_view_page-block + div',
+        '.notion-topbar',
+        '.notion-topbar-mobile'
+      ]
+      for (const selector of selectors) {
       // Custom script
-      const actions = document.querySelector('div.notion-collection_view_page-block > div > [role="tablist"] + div');
-      if (actions) {
-      (function removeActions(x = 0) {
-        if (actions) {
-            console.info('[BP]', 'Removed actions');
-            actions.parentNode.removeChild(actions);
+      const element = document.querySelector(selector);
+      if (element) {
+      (function removeElement(x = 0) {
+        if (element) {
+            console.info('[BP]', 'Removed element');
+            element.parentNode.removeChild(element);
           } else {
             x++;
             if (x < 50) {
-              setTimeout(() => removeActions(x), 300);
+              setTimeout(() => removeElement(x), 300);
             } else if (x >= 50 && x < 100) {
-              setTimeout(() => removeActions(x), 500);
+              setTimeout(() => removeElement(x), 500);
             } else if (x >= 100) {
-              console.info('[BP]', 'Failed to remove actions');
+              console.info('[BP]', 'Failed to remove element');
             }
           }
         })();
       }
+    }
 
       return url.replace(/^.*:(.*)\/\//, '/200/$1');
     }
@@ -150,7 +158,9 @@ const customStyle = `
 
 /* Actions view, topbar, table view placeholders */
 div.notion-collection_view_page-block > div > [role="tablist"] + div,
+.notion-selectable.notion-collection_view_page-block + div,
 .notion-topbar,
+.notion-topbar-mobile,
 .notion-table-view-empty-placeholder {
   display: none !important;
 }
