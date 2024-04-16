@@ -95,14 +95,25 @@ const customScript = () => {
       domain.endsWith('statsigapi.net')
     ) {
       console.info('[NCD]', 'Suppress request:', url);
-      // Custom
-      document.addEventListener('DOMContentLoaded', () => {
-        console.info('[BP]', 'Remove actions');
+
+      // Custom script
+      (function removeActions(x = 0) {
         const actions = document.querySelector('div.notion-collection_view_page-block > div > [role="tablist"] + div');
         if (actions) {
-          actions.parentNode.removeChild(actions);
-        }
-      })
+            console.info('[BP]', 'Removed actions');
+            actions.parentNode.removeChild(actions);
+          } else {
+            x++;
+            if (x < 50) {
+              setTimeout(() => removeActions(x), 300);
+            } else if (x >= 50 && x < 100) {
+              setTimeout(() => removeActions(x), 500);
+            } else if (x >= 100) {
+              console.info('[BP]', 'Failed to remove actions');
+            }
+          }
+        })();
+
       return url.replace(/^.*:(.*)\/\//, '/200/$1');
     }
     return url;
