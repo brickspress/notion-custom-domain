@@ -156,9 +156,11 @@ div.notion-collection_view_page-block > div > [role="tablist"] + div,
 }
 
 /* Desciption */
-.notion-page-controls + div div:last-child {
-  margin-top: 20px !important;
+.notion-page-controls + div > div:last-child > * {
   font-size: 15px !important;
+}
+.notion-page-controls + div > div:last-child {
+  margin-top: 20px !important;
 }
 .notion-page-controls + div div[placeholder] a {
   color: rgb(255 255 255) !important;
@@ -173,6 +175,7 @@ div.notion-collection_view_page-block > div > [role="tablist"] + div,
 }
 
 /* Hidden groups */
+.notion-board-view > div[data-block-id] > div:first-child > div:last-child,
 .notion-board-view > div[data-block-id] > div:last-child,
 .notion-board-view > div[data-block-id] > div[style*="margin-left"] {
   display: none !important;
