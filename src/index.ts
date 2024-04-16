@@ -97,8 +97,9 @@ const customScript = () => {
       console.info('[NCD]', 'Suppress request:', url);
 
       // Custom script
+      const actions = document.querySelector('div.notion-collection_view_page-block > div > [role="tablist"] + div');
+      if (actions) {
       (function removeActions(x = 0) {
-        const actions = document.querySelector('div.notion-collection_view_page-block > div > [role="tablist"] + div');
         if (actions) {
             console.info('[BP]', 'Removed actions');
             actions.parentNode.removeChild(actions);
@@ -113,6 +114,7 @@ const customScript = () => {
             }
           }
         })();
+      }
 
       return url.replace(/^.*:(.*)\/\//, '/200/$1');
     }
@@ -154,7 +156,7 @@ const customStyle = `
   }
 
   // Desciption
-  .notion-page-controls + div div[placeholder] {
+  .notion-page-controls + div div:last-child {
     margin-top: 20px !important;
     font-size: 15px !important;
   }
