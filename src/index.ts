@@ -145,6 +145,25 @@ const customStyle = `
   .notion-topbar > div > div:nth-last-child(1), .notion-topbar > div > div:nth-last-child(2) { 
     display:none !important; 
   }
+
+  div.notion-collection_view_page-block > div > [role="tablist"] + div,
+  .notion-topbar,
+  .notion-table-view-empty-placeholder {
+    display: none !important;
+  }
+  .notion-page-controls + div div[placeholder] {
+    margin-top: 20px !important;
+  }
+  .notion-page-controls + div div[placeholder] a {
+    color: rgb(255 255 255) !important;
+    background: rgb(0 0 0) !important;
+    padding: 3px 8px !important;
+    border-radius: 4px !important;
+  }
+  .notion-page-controls + div div[placeholder] a * {
+    border: none !important;
+    opacity: 1 !important;
+  }
 `;
 
 function getCustomScript() {
