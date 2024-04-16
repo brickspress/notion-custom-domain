@@ -85,18 +85,6 @@ const ga = GA_MEASUREMENT_ID
 </script>`
   : '';
 
-const cs = `
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      console.info('[BP]', 'Remove actions');
-      const actions = document.querySelector('div.notion-collection_view_page-block > div > [role="tablist"] + div');
-      if (actions) {
-        actions.parentNode.removeChild(actions);
-      }
-    })
-  </script>
-`;
-
 const customScript = () => {
   const replacedUrl = (url: string) => {
     const [, domain] = /^https?:\/\/([^\\/]*)/.exec(url) || ['', ''];
@@ -107,6 +95,14 @@ const customScript = () => {
       domain.endsWith('statsigapi.net')
     ) {
       console.info('[NCD]', 'Suppress request:', url);
+      // Custom
+      document.addEventListener('DOMContentLoaded', () => {
+        console.info('[BP]', 'Remove actions');
+        const actions = document.querySelector('div.notion-collection_view_page-block > div > [role="tablist"] + div');
+        if (actions) {
+          actions.parentNode.removeChild(actions);
+        }
+      })
       return url.replace(/^.*:(.*)\/\//, '/200/$1');
     }
     return url;
@@ -235,7 +231,7 @@ app.use(
         data = data
           .replace(
             '</head>',
-            `<script>${ncd}</script>${getCustomScript()}${getCustomStyle()}${cs}</head>`,
+            `<script>${ncd}</script>${getCustomScript()}${getCustomStyle()}</head>`,
           )
           .replace('</body>', `${ga}</body>`);
       }
