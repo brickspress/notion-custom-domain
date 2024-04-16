@@ -144,40 +144,40 @@ const customScript = () => {
 };
 
 const customStyle = `
-  .notion-topbar > div > div:nth-last-child(1), .notion-topbar > div > div:nth-last-child(2) { 
-    display:none !important; 
-  }
+.notion-topbar > div > div:nth-last-child(1), .notion-topbar > div > div:nth-last-child(2) { 
+  display:none !important; 
+}
 
-  // Actions view, topbar, table view placeholders
-  div.notion-collection_view_page-block > div > [role="tablist"] + div,
-  .notion-topbar,
-  .notion-table-view-empty-placeholder {
-    display: none !important;
-  }
+/* Actions view, topbar, table view placeholders */
+div.notion-collection_view_page-block > div > [role="tablist"] + div,
+.notion-topbar,
+.notion-table-view-empty-placeholder {
+  display: none !important;
+}
 
-  // Desciption
-  .notion-page-controls + div div:last-child {
-    margin-top: 20px !important;
-    font-size: 15px !important;
-  }
-  .notion-page-controls + div div[placeholder] a {
-    color: rgb(255 255 255) !important;
-    background: rgb(0 0 0) !important;
-    padding: 3px 8px !important;
-    border-radius: 4px !important;
-    font-weight: 500 !important;
-  }
-  .notion-page-controls + div div[placeholder] a * {
-    border: none !important;
-    opacity: 1 !important;
-  }
+/* Desciption */
+.notion-page-controls + div div:last-child {
+  margin-top: 20px !important;
+  font-size: 15px !important;
+}
+.notion-page-controls + div div[placeholder] a {
+  color: rgb(255 255 255) !important;
+  background: rgb(0 0 0) !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  font-weight: 500 !important;
+}
+.notion-page-controls + div div[placeholder] a * {
+  border: none !important;
+  opacity: 1 !important;
+}
 
-  // Hidden groups
-  .notion-board-view div[data-block-id] > div:last-child,
-  .notion-board-view div[data-block-id] > div[style*="margin-left"] {
-    display: none !important;
-    pointer-events: none !important;
-  }
+/* Hidden groups */
+.notion-board-view > div[data-block-id] > div:last-child,
+.notion-board-view > div[data-block-id] > div[style*="margin-left"] {
+  display: none !important;
+  pointer-events: none !important;
+}
 `;
 
 function getCustomScript() {
